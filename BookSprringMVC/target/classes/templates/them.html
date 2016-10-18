@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<title>Thêm sách</title>
+</head>
+<body>
+	<h3>Thêm Sách</h3>
+	<form action="#" th:action="@{/xulithem}" th:object="${book}">
+		<p><input type="text" th:field="*{name}"/></p>
+		<p><select th:field="*{bookCategory}">
+			<option th:each="item:${categories}" th:value="${item.id}" th:text="${item.name}"></option>
+		</select></p>
+		<p><input type="submit" value="lưu"/></p>
+	</form>
+</body>
+</html>

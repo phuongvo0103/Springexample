@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1"/>
+	<title>Liệt kê</title>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript">
+		 function load_ajax(){
+                 alert('Clicked');
+            }
+	</script>
+</head>
+<body>
+	<h3><label for="book.lietke.tieude" th:text="#{book.lietke.tieude}"></label></h3>
+	<p>
+		<select id="search_book" onchange="load_ajax()">
+			<option th:each="item:${categories}" th:value="${item.id}" th:text="${item.name}"/>
+		</select>
+	</p>
+	<table border="1">
+			<thead>
+				<tr>
+					<th><label for="book.lietke.id" th:text="#{book.lietke.id}"></label></th>
+					<th><label for="book.lietke.tensach" th:text="#{book.lietke.tensach}"></label></th>
+					<th><label for="book.lietke.theloaisach" th:text="#{book.lietke.theloaisach}"></label></th>
+					<th><label for="book.lietke.action" th:text="#{book.lietke.action}"></label></th>
+					<th><a th:href="@{/them}">thêm</a></th>
+				</tr>
+			</thead>
+			<tr th:each="item:${book}">
+				<td th:text="${item.id}"></td>
+				<td th:text="${item.name}"></td>
+				<td th:text="${item.bookCategory.name}"></td>
+				<td><a th:href="@{/xoa/{id}(id=${item.id})}">xóa</a></td>
+				<td><a th:href="@{/sua/{id}(id=${item.id})}">sửa</a></td>
+			</tr>
+	</table>
+</body>
+</html>
